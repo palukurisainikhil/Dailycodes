@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node
+{
+	int data;
+	struct Node *link;
+	struct Node *right;
+};
+struct Node*head=NULL;
+void insert(int x)
+{
+  struct Node *temp;
+  temp=( struct Node*)malloc(sizeof(struct Node));
+  temp->data=x;
+  temp->link=NULL;
+  temp->right=NULL;
+  if(head==NULL)
+  {
+  	head=temp;
+  	return;
+  }
+  struct Node *temp2=head,*pre;
+  while(temp2->right!=NULL)
+  {
+  	temp2=temp2->right;
+  }
+  pre=temp2->right;
+  temp2->right=temp;
+  temp->link=pre;
+}
+void print()
+{
+	struct Node *temp3=head;
+	while(temp3!=NULL)
+	{
+		printf("%d\n",temp3->data);
+		temp3=temp3->right;
+	}
+}
+int main()
+{
+	insert(2);
+	insert(4);
+	insert(6);
+	insert(8);
+	insert(10);
+	print();
+}
